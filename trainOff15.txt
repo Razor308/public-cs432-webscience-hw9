@@ -1,0 +1,13 @@
+Your classmate posted a new Followup.
+
+Regular expressions for terms and combinations definitely seems like a possible solution to some spam issues. I have often wondered why spam filters don't begin with analyzing the email headers. If the email displayed does not match the email linked, I feel like it is a fairly safe bet that the email should be treated as spam. Maybe Gmail does this, but I know that the most common tip that anyone gives for identifying spam email is to check to see if the sender's email address is actually a link to somewhere else. Maybe there are valid reasons to spoof an y email, but I haven't noticed any.
+
+Click here to view. Search or link to this question with @340.
+
+Sign up for more classes at http://piazza.com/odu.
+
+
+Thanks,
+The Piazza Team
+
+Contact us at team@piazza.com

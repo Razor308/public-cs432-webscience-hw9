@@ -1,0 +1,189 @@
+Delivered-To: lbart001@gsa.odu.edu
+Received: by 2002:a02:6655:0:0:0:0:0 with SMTP id l21csp213556jaf;
+        Thu, 10 Dec 2020 21:20:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxpRiXl50UCUXPtdBhgIZ/MUgvSOQSyCCuuiH9DpnbqVA/ekUbr9/FPJ1THqJOD9naX98SN
+X-Received: by 2002:aca:5a8b:: with SMTP id o133mr8037688oib.64.1607664014884;
+        Thu, 10 Dec 2020 21:20:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607664014; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WNU95pUYGw2e3/jDgOoV2R+paElurYGRW3htvkzrtNfL0gBLCjZZnuje3c5VUpiGDl
+         wE9ltjY+P4EJUkCYMi7wbW0XdiS4Z9MgSheN9iVYhxe2fFx16LUxXdrPPGZAcdkyPuCD
+         8Q3jSYQtfyhrSLgll1HgLm/LnjvFKYvbrejPz7UZPHRuonsZb/ClJ2GLiruYYIMq/joM
+         3dpq+Ay003WapLVkhUOu7/OeZ92O8Oa+7P6y9UaW1ByUQMtk2JTOptayZSkQUecfOxwN
+         ZlKiX+XtKxGlK3Spm0dczofSFLRU9bRXfT/R4LpuKjrA+HKJOHVKqx7RWNG1vun5/3Fd
+         yFFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:subject:reply-to
+         :from:to:date;
+        bh=L+6s6JJnXBOdcxk+Yk3hof4c5atHut11aBQhnymN03Q=;
+        b=wpDwJvYgLqxUHD8ERvPCxaJ7yYv05PxH+3xQTnXMwW71s4cxb1AiE5SDaYvEL2d7lM
+         fE8AUIMTXY1hW6pI8yIqZ3QDxwSnV/F+k+NgMNAlC4jRLvO1mnIWk/DExp5N7KzaaCtY
+         msS6x5jZBOOMxAhsGGRMpaoBE8s4yOpPb42/eLKFs5DH1XlGDJOTClN+EFONJGKT5j0t
+         BaKc2WOorQYY5uzFL4/sQErpeF3Ziq+AlNoxkccvP0tytfH9LhzD80WHkxhiOT7BQk6P
+         NpID8nIsCwTBobhPHvthVLt1u76y1V7rP0PsTDKfRTO1P71vU2RcK1LEEr05NATz+5zy
+         agdw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=softfail (google.com: domain of transitioning universityannouncements@odu.edu does not designate 2603:10b6:5:3b8::9 as permitted sender) smtp.mailfrom=UniversityAnnouncements@odu.edu
+Return-Path: <UniversityAnnouncements@odu.edu>
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (mail-dm6nam10lp20205.outbound.protection.outlook.com. [2a01:111:f400:7e88::205])
+        by mx.google.com with ESMTPS id p10si3769980oig.88.2020.12.10.21.20.13
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Dec 2020 21:20:14 -0800 (PST)
+Received-SPF: softfail (google.com: domain of transitioning universityannouncements@odu.edu does not designate 2603:10b6:5:3b8::9 as permitted sender) client-ip=2603:10b6:5:3b8::9;
+Authentication-Results: mx.google.com;
+       spf=softfail (google.com: domain of transitioning universityannouncements@odu.edu does not designate 2603:10b6:5:3b8::9 as permitted sender) smtp.mailfrom=UniversityAnnouncements@odu.edu
+Received: from DS7PR03CA0004.namprd03.prod.outlook.com (2603:10b6:5:3b8::9) by
+ MW4PR17MB4401.namprd17.prod.outlook.com (2603:10b6:303:65::18) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3654.12; Fri, 11 Dec 2020 05:20:01 +0000
+Received: from DM6NAM11FT055.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:3b8:cafe::60) by DS7PR03CA0004.outlook.office365.com
+ (2603:10b6:5:3b8::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3654.12 via Frontend
+ Transport; Fri, 11 Dec 2020 05:20:01 +0000
+Authentication-Results: spf=pass (sender IP is 128.82.55.16)
+ smtp.mailfrom=odu.edu; gsa.odu.edu; dkim=none (message not signed)
+ header.d=none;gsa.odu.edu; dmarc=bestguesspass action=none
+ header.from=odu.edu;
+Received-SPF: Pass (protection.outlook.com: domain of odu.edu designates
+ 128.82.55.16 as permitted sender) receiver=protection.outlook.com;
+ client-ip=128.82.55.16; helo=webmail.odu.edu;
+Received: from webmail.odu.edu (128.82.55.16) by
+ DM6NAM11FT055.mail.protection.outlook.com (10.13.173.103) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.20.3632.17 via Frontend Transport; Fri, 11 Dec 2020 05:20:01 +0000
+Received: from dax.ts.odu.edu (192.168.97.75) by kira.ts.odu.edu
+ (192.168.97.76) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2044.4; Fri, 11
+ Dec 2020 00:15:02 -0500
+Received: from localhost (172.18.200.130) by webmail.odu.edu (192.168.97.75)
+ with Microsoft SMTP Server id 15.1.2044.4 via Frontend Transport; Fri, 11 Dec
+ 2020 00:15:02 -0500
+Date: Fri, 11 Dec 2020 05:15:02 +0000
+Return-Path: UniversityAnnouncements@odu.edu
+To: University Announcements <UniversityAnnouncements@odu.edu>
+From: University Announcements <UniversityAnnouncements@odu.edu>
+Reply-To: University Announcements <UniversityAnnouncements@odu.edu>
+Subject: Student Announcements
+Message-ID: <d7aa24178925a8333bf9915111e7cbd4@localhost>
+X-Priority: 3
+X-Mailer: PHPMailer 5.2.2 (http://code.google.com/a/apache-extras.org/p/phpmailer/)
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/html; charset="iso-8859-1"
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c81420e9-8f50-4f2b-07a2-08d89d94691e
+X-MS-TrafficTypeDiagnostic: MW4PR17MB4401:
+X-LD-Processed: 48bf86e8-11a2-4b8a-8cb3-68d8be2227f3,ExtAddr
+X-MS-Exchange-Transport-Forked: True
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-Microsoft-Antispam: BCL:1;
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?MRZB9ygVF6M3FKiBFmutBacQPrpevm1de+6E1ADAYekJ+k4ce/TnIEBO0z?=
+ =?iso-8859-1?Q?jhAcctL+ff0MJzud3dup1z+0jYt+IOsJu+EKgMha/yrV+V1D4oZe5n9rPL?=
+ =?iso-8859-1?Q?pyFJFZemZrLtVb2enQAgq1yluiUegBqDMaLsMqTTP+iqKaxR2O7X/n8guY?=
+ =?iso-8859-1?Q?nWhFu6ArSzfiIjVuXt/ZlxR+EDXDDKvgZKOLv0Pl6ruR9xK2BL4tbyABTr?=
+ =?iso-8859-1?Q?UZQIrS2Wo4yDB/bV868+IRKxYsJWC0tkkLdCVGRRtkzGzun39+oAX1h9zQ?=
+ =?iso-8859-1?Q?tODsTLT7s3CgcAf41UMX0Ccf5OEQEe45CwEhB3Ny5PvWAmTuDWCWsfcP3Y?=
+ =?iso-8859-1?Q?3s3Gz3ZRY2CkZ+Ghndbb+ZqsnQjmM9ML0hJPzj0s+x9sFhDUmEEoAgoGZt?=
+ =?iso-8859-1?Q?HQn163nFaHGIxhC01W0ItE3B8LOiLAUm7+BYnDlXKHO5F9hb+qwzrqCxXC?=
+ =?iso-8859-1?Q?HRQ/Sk0QHPqhMsRn14o9ReQRgR4BAuYa8WSZDPvwsQYUWoHCK+DerZoyLX?=
+ =?iso-8859-1?Q?4TF9b7tJB0JSOWDkCQh7eNoi+tstGhqXuRHgXHOmCfbd5xms7pe8Evgquk?=
+ =?iso-8859-1?Q?mKkT8VwxjIwUmYa3jGmY/B3yAIYTv9Kg1C2msR2vyx+vcVJ62Fmw25ByWT?=
+ =?iso-8859-1?Q?F9SDpVI1z+Tg2myAp/2iBh4dLsjPuqfqf1ORsQxQNms8WKqSqdb51IxYP8?=
+ =?iso-8859-1?Q?Q8Hgzb9AsRlDTQRufCRgk0Orq9Jf577ADegXgy8cqh17kXKp1fhfmbld8F?=
+ =?iso-8859-1?Q?CVi1d6zE1Y0hsNiKjWzg2uYMCDrKg0zlcKfCVdlaFYGHP9ROHpqdw+6MDr?=
+ =?iso-8859-1?Q?Qts4kmyGsS4CFAk9xfQndjHftzijJnbzfqNzYb5YWLRQOOKiXGHe86INMp?=
+ =?iso-8859-1?Q?0VVtHCF6dRVXwU7DZ+G0xd3nYs7zTUqCt/j0AYZRK8arLyLSHfOBCkWz4c?=
+ =?iso-8859-1?Q?zQaRgV1w+f/01KpOCnnFlgtpmO2kvGovRvWcAfiHvbkptKnOhDrBkErdbU?=
+ =?iso-8859-1?Q?ao0Vu/wecOYPEN/2O1IkYj96jd/9LkW5SsXPzuEZFXIFfuIox9ck4vB1/N?=
+ =?iso-8859-1?Q?/hw+3+2PK1kc8X5zRdavR3dp9ojXtzO1JGAwAqsZiCTvPshRsSa+MnT6CB?=
+ =?iso-8859-1?Q?28PjsvLyDM1maFbtQbw3owZ76MpOCnK2OKJQv1qiesh48nHXDkpNR8tdIT?=
+ =?iso-8859-1?Q?eNEZlyF/BAUfBp+KtqMnfc5S+suF7rPrmJ0STHDU6KV8QkmVOmpJ4oHsNL?=
+ =?iso-8859-1?Q?cTzsUh63VyvPphNgVfXHR+86ElsbYBL7KHvlRCv2uTgDvqPxi7onZTSU1/?=
+ =?iso-8859-1?Q?w18wuOPbZbhlygZI9gx7kfOH3jW0M8HOEGNxQICpsESwBD8XcfXY+B+Vt9?=
+ =?iso-8859-1?Q?eDDCk/ozPEhQ04FMINCvgin4dXDsZdiw6TsjLZ6XWTfViSqdaK4viES5VX?=
+ =?iso-8859-1?Q?40mQyUcDe1MfiVplygRU4NsjMaXYE31BeZ1FLt4hcpcf1WfIVLV8rJxtyP?=
+ =?iso-8859-1?Q?pr0ZxqnBGnHvYF64054p8gQC7KxBMn7LpY5JD9EGvq93rqCXcMX/m5x1jz?=
+ =?iso-8859-1?Q?fg/UiZc=3D?=
+X-Forefront-Antispam-Report:
+	CIP:128.82.55.16;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:CAL;SFV:SKN;H:webmail.odu.edu;PTR:webmail.odu.edu;CAT:NONE;SFS:;DIR:INB;
+X-OriginatorOrg: odu.edu
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Dec 2020 05:20:01.5192
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c81420e9-8f50-4f2b-07a2-08d89d94691e
+X-MS-Exchange-CrossTenant-Id: 48bf86e8-11a2-4b8a-8cb3-68d8be2227f3
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=48bf86e8-11a2-4b8a-8cb3-68d8be2227f3;Ip=[128.82.55.16];Helo=[webmail.odu.edu]
+X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT055.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR17MB4401
+
+<h2>Student Announcements</h2><p><em>This is a
+post only e-mail. Please do not respond to this
+message.</em></p>Friday, December 11,
+2020<p>Today's announcements are listed below. For
+details, click on the appropriate subject link. If
+you have any questions regarding an announcement,
+please contact the individual who posted the
+message. For questions about this system, please
+contact ITS at (757)683-3192 or email <a
+href="mailto:itshelp@odu.edu">itshelp@odu.edu</a>.</p><p><a
+href="http://www.odu.edu/announcements/student">Web
+View</a></p><section
+class="announcement-category"><h3><span
+class="ann-academic"></span>Academics: </h3><div
+style="border-left: 1px solid #a3b5c4;"><p
+style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/10/odu_libraries_open_d.html">ODU
+Libraries Open During Final Exams!</a></p><p
+style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/8/take_your_student_op.html">Take
+Your Student Opinion Surveys
+Today</a></p></div></section><section
+class="announcement-category"><h3><span
+class="ann-parking"></span>Parking and Facilities:
+</h3><div style="border-left: 1px solid
+#a3b5c4;"><p style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/8/city_of_norfolk_mult.html">City
+of Norfolk Multimodal Transportation Plan
+Update</a></p><p style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/8/lot_57_48th_street_c.html">Lot
+57/48th Street Closure for Owens House Site
+Work</a></p></div></section><section
+class="announcement-category"><h3><span
+class="ann-promotion"></span>Promotions and Sales:
+</h3><div style="border-left: 1px solid
+#a3b5c4;"><p style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/10/monarch_dining_speci.html">Monarch
+Dining - Special Hours</a></p><p
+style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/10/_a_promised_land_by_.html">"
+A Promised Land " by Barack Obama</a></p><p
+style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/8/equinox_holiday_mark.html">Equinox
+Holiday Market</a></p><p style="margin-left:
+10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/8/holiday_bookstore_ho.html">Holiday
+Bookstore Hours</a></p><p style="margin-left:
+10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/8/textbook_rentals_are.html">Textbook
+Rentals are Due Dec.
+19th</a></p></div></section><section
+class="announcement-category"><h3><span
+class="ann-safety"></span>Safety: </h3><div
+style="border-left: 1px solid #a3b5c4;"><p
+style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/10/lane_closure_on_elkh.html">Lane
+Closure on Elkhorn
+5/18-12/31</a></p></div></section><section
+class="announcement-category"><h3><span
+class="ann-social"></span>Activities/Social:
+</h3><div style="border-left: 1px solid
+#a3b5c4;"><p style="margin-left: 10px;"><a
+href="http://www.odu.edu/content/odu/announcements/student/2020/12/9/_1_29_21_a_little_w_.html">1/29/21
+A Little W.I.L.D.</a></p></div></section> 
+
+

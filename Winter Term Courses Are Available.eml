@@ -1,0 +1,416 @@
+Delivered-To: lbart001@gsa.odu.edu
+Received: by 2002:a02:6655:0:0:0:0:0 with SMTP id l21csp5843220jaf;
+        Thu, 10 Dec 2020 11:03:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwr6s7DPGBTZk86A0IBb/MNHic3EUxeadfNL6rHKfLNLRvzlPEMu+EZ7lP4ku4jwxvu/PIM
+X-Received: by 2002:ac8:4a17:: with SMTP id x23mr11576771qtq.138.1607626996198;
+        Thu, 10 Dec 2020 11:03:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607626996; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WAvUgSumdcmE3QjW83ci65HAf6HNyOzHmRolVCAAFNQq5K3LJeNLFYj/oStkwg4OC/
+         pw4j+/I2+IqP6DXu5LWRZ5HiZPoypHlK43t9XeRNYvnNmEgKTnWx3zvGCRrMj6Fg1MYZ
+         sK4IfsopqOHbf48aiBaXB5DHz2KBfHNHmw32U/DqOydkMdNfwH/sdoXmwk9gEL81YzPb
+         206oZrNDL075ocBt584KPL/SI2kJih0R+yGnCdEyU97oo8VrHJzz3YQ2Pwh9a8tYhghm
+         gc9TnCyNFuBDvoQUPDssYyBDy3KOInZIraicusDW1Ah5dv5I8U1H/vWG6jbDHuze81EX
+         SUwQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:list-id:reply-to:mime-version:list-unsubscribe:date
+         :subject:to:from:dkim-signature;
+        bh=26EGGRU/YZw/QsOCSBh/HqoPVO37qQFzSeWxjYSF1sc=;
+        b=Ds+xRx16nj+5w8kUvHwxE3QTzTlonwvy0C5SNSIhARAV4RIBeRZ/+9FnQN+SDuro++
+         Etjx/A9br0zPEhSULYxV78Q0dQKNIDHTnBC1Z/33WRaAVMc1udAFMbj/Lymplzvr963S
+         WbKkAILuZtI4BF4MFPykhVIk+QT8aprQ9AWxtubza/95OasqC3tDDZ+fB299ELvXo1kv
+         SH2RLY1C0hmOeBLLf7ZuVyzLn52xF0XdMnMBeSG0xCUs9s50zF7CWxWgdFwZXq+C6hyp
+         b68EkLjHOtMxf//S/O3GLwnr1lmiRCXRZRNhyNfTTeFbnU8KUnOpN31phuorNltbNdaD
+         uAwQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@enrollment.odu.edu header.s=10dkim1 header.b=tA7WbDHw;
+       spf=fail (google.com: domain of bounce-293_html-2203469-327782-100026640-4@bounce.enrollment.odu.edu does not designate 2603:10b6:3:116::18 as permitted sender) smtp.mailfrom=bounce-293_HTML-2203469-327782-100026640-4@bounce.enrollment.odu.edu
+Return-Path: <bounce-293_HTML-2203469-327782-100026640-4@bounce.enrollment.odu.edu>
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (mail-dm6nam12lp20206.outbound.protection.outlook.com. [2a01:111:f400:fe59::206])
+        by mx.google.com with ESMTPS id v45si1876024qvf.135.2020.12.10.11.03.15
+        for <lbart001@gsa.odu.edu>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Dec 2020 11:03:16 -0800 (PST)
+Received-SPF: fail (google.com: domain of bounce-293_html-2203469-327782-100026640-4@bounce.enrollment.odu.edu does not designate 2603:10b6:3:116::18 as permitted sender) client-ip=2603:10b6:3:116::18;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@enrollment.odu.edu header.s=10dkim1 header.b=tA7WbDHw;
+       spf=fail (google.com: domain of bounce-293_html-2203469-327782-100026640-4@bounce.enrollment.odu.edu does not designate 2603:10b6:3:116::18 as permitted sender) smtp.mailfrom=bounce-293_HTML-2203469-327782-100026640-4@bounce.enrollment.odu.edu
+Received: from DM5PR19CA0056.namprd19.prod.outlook.com (2603:10b6:3:116::18)
+ by BYAPR17MB2199.namprd17.prod.outlook.com (2603:10b6:a02:b6::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3654.13; Thu, 10 Dec
+ 2020 19:03:14 +0000
+Received: from DM6NAM11FT060.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:3:116:cafe::e5) by DM5PR19CA0056.outlook.office365.com
+ (2603:10b6:3:116::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3654.12 via Frontend
+ Transport; Thu, 10 Dec 2020 19:03:14 +0000
+Authentication-Results: spf=pass (sender IP is 13.111.115.12)
+ smtp.mailfrom=bounce.enrollment.odu.edu; odu.edu; dkim=pass (signature was
+ verified) header.d=enrollment.odu.edu;odu.edu; dmarc=bestguesspass
+ action=none header.from=enrollment.odu.edu;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of
+ bounce.enrollment.odu.edu designates 13.111.115.12 as permitted sender)
+ receiver=protection.outlook.com; client-ip=13.111.115.12;
+ helo=mta.enrollment.odu.edu;
+Received: from mta.enrollment.odu.edu (13.111.115.12) by
+ DM6NAM11FT060.mail.protection.outlook.com (10.13.173.63) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3632.17 via Frontend Transport; Thu, 10 Dec 2020 19:03:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=10dkim1; d=enrollment.odu.edu;
+ h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:Reply-To:List-ID:
+ X-CSA-Complaints:Message-ID:Content-Type; i=cepd@enrollment.odu.edu;
+ bh=26EGGRU/YZw/QsOCSBh/HqoPVO37qQFzSeWxjYSF1sc=;
+ b=tA7WbDHwIgu1RExGH6ylfUz262xQd/dehA3V9SRxpouqoUcShIceDNgrBCzFJPibzUjVeNtWQfX1
+   ToZ35P6yqLRZavHv/+S0JJlfWjaR8WWuunj1nyyBoU1RSocouRVB97CcOjKan+53dq/6Jsd7G3g+
+   ak9JC7yhYEvLeS8iFIpBTLVdhdfhlhYP0eLyMD40dA6tjewVrbUy9I/TOhROP0FJw0V/1UIFCS2x
+   R7lV/Mx2RnONZu7u+q2GZ9GsO8y/9xeLoKtvKHx0pFFukVQFTpTjvHErzcnCOsGPvSOkHDY3A61b
+   vkr1xXO7IeBtiZwp9WX5SNJHw2RgwU+Idx75rA==
+Received: by mta.enrollment.odu.edu id hq9of42fmd43 for <lbart001@odu.edu>; Thu, 10 Dec 2020 19:02:42 +0000 (envelope-from <bounce-293_HTML-2203469-327782-100026640-4@bounce.enrollment.odu.edu>)
+From: "ODU school of continuing education" <cepd@enrollment.odu.edu>
+To: <lbart001@odu.edu>
+Subject: Winter Term Courses Are Available
+Date: Thu, 10 Dec 2020 13:02:42 -0600
+List-Unsubscribe: <mailto:leave-fd4d1679760b5c392848-fe9516727567007b7c-fec2177272630c7f-fe3c15707564067b731070-ffcb10@leave.enrollment.odu.edu>
+MIME-Version: 1.0
+Reply-To: "ODU School of Continuing education" <reply-fec2177272630c7f-293_HTML-2203469-100026640-4@reply.enrollment.odu.edu>
+List-ID: <100026640.xt.local>
+X-CSA-Complaints: whitelist-complaints@eco.de
+X-SFMC-Stack: 10
+x-job: 100026640_327782
+Message-ID: <22639824-db04-4f3f-9096-c8799b99f276@dfw1s10mta742.xt.local>
+Content-Type: multipart/alternative;
+	boundary="anr1saHjVbqZ=_?:"
+Return-Path:
+	bounce-293_HTML-2203469-327782-100026640-4@bounce.enrollment.odu.edu
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 48bf86e8-11a2-4b8a-8cb3-68d8be2227f3:0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 347f6904-22d3-4818-1f1c-08d89d3e3f27
+X-MS-TrafficTypeDiagnostic: BYAPR17MB2199:
+X-LD-Processed: 48bf86e8-11a2-4b8a-8cb3-68d8be2227f3,ExtAddr
+X-MS-Oob-TLC-OOBClassifiers: OLM:580;
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?S0pRdldrbUVPVjRSK0h1aUVoRThIYVQrSW9YeTFpVW9JSkMzRndyMEdZclFZ?=
+ =?utf-8?B?NEhyQkJLR1VvOEszdlQ4NEpZcjV0MnRGbFNFTkUxL2lJU3dQVTYzMG5vMVVK?=
+ =?utf-8?B?Ritub0s1K3BEWHdReFprTHpLNzlGOVZkWFpBbDYwZkpjQmJCUXNnZURJZFV3?=
+ =?utf-8?B?a0Z6THlTUDJWaFZsdEhCYldLRUMzcHJUZVFYK0cxOFp4bVJNMmhaR0xpT29i?=
+ =?utf-8?B?L08yL1AraEtmSUhScWhYb1NsZFRtUS8wZFZYUzJlekVRRWJ2MUxHeTl5RGhM?=
+ =?utf-8?B?UFRneEFmODBMSU1la3FrWjVXdUt4cGNJY1A2MXY5N1JDd2ViL041VkVDSXNP?=
+ =?utf-8?B?R09NRmhPM2krNGlVWlFNRStDU0F1bU1UM1F5UDRCVnBqczlpbCtZNDcwSURx?=
+ =?utf-8?B?NFR4ZzhqdG8wWks3eWdEYkEwUmU0L296L2FJUXlXeWlEZDFwSmVpcDZOMW9i?=
+ =?utf-8?B?OE5SQ1BpSFd6Q3VOcCs2T1o3aGdySUlIcmR3VkllQmpmaHQrMEhHYzJEYmNJ?=
+ =?utf-8?B?Yml0VndORGVRYXROT2M3LzZvdWI1L3JKWFRNZWhmVUpIVU5OTnhxc1piQnN4?=
+ =?utf-8?B?b3NzejdBZVRwdld5MmxIL2k2dDYzeGdScm1wSHovQ2F0TitYd1oyUFEzL21J?=
+ =?utf-8?B?ZnhpUFlSc3lkTmI3b2JrMlhPNU5JN1cwSWNFeDFCSTZJclcyRTZTODZ5eThy?=
+ =?utf-8?B?VHh6aHdIdWp5THlJSWJHQVV1R0NERkhyUEM2N1dhYVJndjQ1Ny9ibzZrOXUv?=
+ =?utf-8?B?RllML0ZQSjRuQXJhK1V1L2FpMml5dVRSTzFKNk9UNWcyWU80Y3JtY3JlRXQr?=
+ =?utf-8?B?OVg5UHRvZHBIV1J2RXdscDViN3lLYkZ6QzZZWGFmWlpGY3JQRlRHM3RTbUpo?=
+ =?utf-8?B?K3ptVS9hQ2J5UWNUMmFRejhtWXE4ckczY05HMXVNa3pQUXdzT1NzS1FjREtw?=
+ =?utf-8?B?UUgrMmFyN2FROXlCNG9CMnVnTUpnRUx5d2d3YWtYV0lZMjdWR3Q4OTZ4R1dF?=
+ =?utf-8?B?ZGtRZEpUcFBRN2N5aE9qdE5QUGhIdzhjOVBRMlBkNWdDcSt3c3BRalpaVm9t?=
+ =?utf-8?B?WHV4TGVhQU42UFNheTgyUjUzSkN2TE9wQzQrbFNQSWRhT2lxbzM5NHp1NEI4?=
+ =?utf-8?B?NmNnak1QNk9vSWNnMkNTbTgyUVZ0L0tVSDc1Y1hiNTU2YXZreEdoUkNRUW15?=
+ =?utf-8?B?Q3J5N1NaMGRRUzcxWnYybUFnQk5aZ2RlbDFPTDlpUWNFbGRHUkxVYitVTnhH?=
+ =?utf-8?B?cUI0OTBjZjdaQzVrUTIyWEVZT3pHRWxUdmIxV0drUVBPL3ZQY3ZGZjRzenhI?=
+ =?utf-8?Q?M3XUcR+LK4tUvtVYsGa1WlOg7YT4s4mfXA?=
+X-Forefront-Antispam-Report:
+	CIP:13.111.115.12;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:NLI;SFV:SKN;H:mta.enrollment.odu.edu;PTR:mta.enrollment.odu.edu;CAT:NONE;SFS:;DIR:INB;
+X-OriginatorOrg: enrollment.odu.edu
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Dec 2020 19:03:14.5017
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 347f6904-22d3-4818-1f1c-08d89d3e3f27
+X-MS-Exchange-CrossTenant-Id: 48bf86e8-11a2-4b8a-8cb3-68d8be2227f3
+X-MS-Exchange-CrossTenant-AuthSource:
+	DM6NAM11FT060.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR17MB2199
+
+This is a multi-part message in MIME format.
+
+--anr1saHjVbqZ=_?:
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+ 
+ 
+
+ 
+http://click.enrollment.odu.edu/?qs=d127416b3f58fdd592dddd0e23482723bce4854b74ecb4e6b84b4020b5da91d50662aebc09dcfa76ce7e7efe76685c1e06f9f0c72ce34036 
+
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5213622cfcf6b253917f12945f430c59c968fe132ee5fd8ad306f5e42f5cde15396d6bdc2e28513c2efe0bf289a103296 
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde55603e58af2103086320aa091090b2a57e2c499d5b093a0dd570e9779f7ab571f0510fec4f7f8768a88de03adc7f22d42 
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5ee739e5a41f7b903d1f2325c2c4b2638e062b3db2b5b47d997be908bdac264d25d44dcf8af5de83d67a0c0070956dcb6 
+
+
+
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde520fb921aeb0a6b0d5f2d75f7f7e001d3d56936669caac9bb327e48c0b195f7e7f2a8bfc0d28c441615b9c3b50da3138d 
+
+
+
+ 
+ 
+
+ Take A Class During Winter Break
+
+Dear Logan,
+
+ 
+I&rsquo;m writing to encourage you to review ODU&rsquo;s 
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5460a0ce2f4439f5febded7a68c7d80667b6acae11aa0d49d7b9077feaf14c7f11d8ae23957a3c8eb11e91eaa409a7ebb 
+winter term  offerings. There are a limited number of courses offered completely online starting December 29 and end January 15. Winter Term courses are compressed online versions of courses. Instructors pack a full semester's worth of knowledge into three short weeks with the same great faculty, classes, services, and learning opportunities. Consult your academic advisor and your degree plan to assure courses count towards your degree completion
+
+
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde536acfdb7b25c8aad22c1856eeaf31a499f9afddb32384458ee37aae66322d8db006fad58588a9096555ff70639354815 
+Search Winter Term Courses! 
+
+
+
+Steps to get started:
+
+	1. 
+Search 
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde536acfdb7b25c8aad22c1856eeaf31a499f9afddb32384458ee37aae66322d8db006fad58588a9096555ff70639354815 
+Winter Term Courses  
+	2. 
+Review 
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde51a5bf7e70ceaeb2250d044c16c831b4829a54acd1e3ddbbea8c0add48cf52e9b64078b02218bf90133774074760a9602 
+Important Dates and Deadlines  
+	3. 
+View How-to 
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde556ffc9e4362568758178bc9d4df964c29e0b5a89acc3a2397aa20a8f2abd77d1d4dd8bb11d13649d299f5530d38e4ef4 
+Register in Leo Online  
+Winter term is part of the spring semester. Students may only register for one winter term course (up to 4 credits). 
+
+
+Go Monarchs!
+
+
+Renee R. Felts, Ed.D.
+
+Assistant Vice President 
+
+School of Continuing Education
+
+ 
+
+
+ 
+ 
+
+ 
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5a1946eb973aec8641a37ef750219423681959201c7e424f50289bb329d012eab532392f01beef5a4a2d88c9bd5ffbdf9 
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde582829b4f526ccab0ba2d342277562793e7571f2223e660cde5f86598df730fbc4ea2fa22f47d0951716a4b0769e6b5af 
+
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde54b2aec35f033453c8ffadf072246a8f937c8f942dc2b970540e3005eb3cf2db6a98f5c997ab6bcdd750ee3c96167b9b9 
+
+
+
+ 
+ 
+
+ 
+http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5e2c40470646fffdc1496b3193da77cca2de41b316dab726583f61b8bc16b7ed03aa0e840f1407e69113ae435d88e0f07 
+School of Continuing Education  - 2110 Monarch Hall, Norfolk, VA 23529 - 
+tel:7576835650 
+757-683-5650 
+
+
+ 
+ 
+
+
+ 
+ 
+
+
+--anr1saHjVbqZ=_?:
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><!--RegionStart[socialslot:"allcontent"]-->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+      ReadMsgBody{ width: 100%;}
+      .ExternalClass {width: 100%;}
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+      body {-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;margin:0 !important;}
+      p { margin: 1em 0;}
+      table td { border-collapse: collapse;}
+      img {outline:0;}
+      a img {border:none;}
+      @-ms-viewport{ width: device-width;}
+    </style>
+    <style type="text/css">
+      @media only screen and (max-width: 480px) {
+        .container {width: 100% !important;}
+        .footer { width:auto !important; margin-left:0; }
+        .mobile-hidden { display:none !important; }
+        .logo { display:block !important; padding:0 !important; }
+        img { max-width:100% !important; height:auto !important; max-height:auto !important;}
+        .header img{max-width:100% !important;height:auto !important; max-height:auto !important;}
+        .photo img { width:100% !important; max-width:100% !important; height:auto !important;}
+        .drop { display:block !important; width: 100% !important; float:left; clear:both;}
+        .footerlogo { display:block !important; width: 100% !important; padding-top:15px; float:left; clear:both;}
+        .nav4, .nav5, .nav6 { display: none !important; }
+        .tableBlock {width:100% !important;}
+        .responsive-td {width:100% !important; display:block !important; padding:0 !important; }
+        .fluid, .fluid-centered {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .fluid-centered {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        /* MOBILE GLOBAL STYLES - DO NOT CHANGE */
+body, .tb_properties{font-family: Arial !important; font-size: 16px !important; color: #575757 !important; line-height: 1.5 !important; padding: 0px !important; }.buttonstyles{font-family: Arial, helvetica, sans-serif !important; font-size: 16px !important; color: #FFFFFF !important; padding: 18px !important; }h1{font-family: Arial !important; font-size: 25px !important; color: #003057 !important; line-height: 1 !important; }h2{font-family: Arial !important; font-size: 22px !important; color: #202898 !important; line-height: 1 !important; }h3{font-family: Arial !important; font-size: 19px !important; color: #575757 !important; line-height: 1 !important; }a:not(.buttonstyles){line-height: 1 !important; }.mobile-hidden{display: none !important; }.responsive-td {width: 100% !important;
+ display: block !important; padding: 0 !important;}
+/* END OF MOBILE GLOBAL STYLES - DO NOT CHANGE */
+      }
+      @media only screen and (max-width: 640px) {
+        .container { width:100% !important; }
+        .mobile-hidden { display:none !important; }
+        .logo { display:block !important; padding:0 !important; }
+        .photo img { width:100% !important; height:auto !important;}
+        .nav5, .nav6 { display: none !important;}
+        .fluid, .fluid-centered {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .fluid-centered {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+      }
+    </style>
+    <!--[if mso]>       <style type="text/css">           /* Begin Outlook Font Fix */               body, table, td {                  font-family : Arial, helvetica, sans-serif;                  line-height : 150%;                  font-size : 16px;                  color : #575757;               }           /* End Outlook Font Fix */       </style>     <![endif]-->
+  </head>
+  <body bgcolor="#EFEFEF" text="#808080" style="margin: 0px; -webkit-text-size-adjust:none;background-color : #EFEFEF; font-family : Arial, helvetica, sans-serif; line-height : 150%; font-size : 16px; color : #575757; padding : 20px; "><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Reply-to-register@odu.edu</div>
+    <div style="font-size:0; line-height:0;"><img src="http://click.enrollment.odu.edu/open.aspx?ffcb10-fec2177272630c7f-fec615737d62007e-fe3c15707564067b731070-ff61167976-fe9516727567007b7c-ffcb10&d=100137" width="1" height="1"></div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+      <tr>
+        <td align="center" valign="top">
+          
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <table cellspacing="0" cellpadding="0" border="0" width="600" class="container" align="center">
+            <tr>
+              <td>
+                <!-- added the border style here -->
+                <table style="font-size : 16px; font-family : Arial, helvetica, sans-serif; line-height : 150%; color : #575757; " class="tb_properties border_style" cellspacing="0" cellpadding="0" bgcolor="#ffffff" width="100%">
+                  <!-- end of comment -->
+                  <tr>
+                    <td align="center" valign="top">
+                      <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <!-- added padding here -->
+                          <td class="content_padding" style="border:0px;padding : 15px; ">
+                            <!-- end of comment -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                              <tr>
+                                <td align="left" class="header" valign="top">
+                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; border-top: 0px; border-right: 0px; border-bottom: 1px solid transparent; border-left: 0px; " class="slot-styling"><tr><td style="padding: 0px 0px 16px; " class="slot-styling camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 50%; padding-right: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" class="stylingblock-content-wrapper" style="min-width: 100%; "><tr>
+<td class="stylingblock-content-margin-cell" style="padding: 0px 0px 6px; "><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0"><tr><td align="left"><a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd592dddd0e23482723bce4854b74ecb4e6b84b4020b5da91d50662aebc09dcfa76ce7e7efe76685c1e06f9f0c72ce34036" title=""   data-linkto="http://">
+<img data-assetid="4565" src="http://image.enrollment.odu.edu/lib/fe3c15707564067b731070/m/1/b744f54f-5396-4031-b0d1-f87a896d654d.jpg" alt="Old Dominion University" height="57" width="135" style="display: block; padding: 0px; text-align: left; height: 57px; width: 135px;"></a></td></tr></table></td></tr></table></td></tr></table></td><td valign="top" class="responsive-td" style="width: 50%; padding-left: 3px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper mobile-hidden"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper mobile-hidden camarker-inner"><table cellpadding="0" cellspacing="0" class="socialshare-wrapper" width="100%"><tr><td align="right"><table cellpadding="0" cellspacing="0" align="right"><tr><td align="right"><!--[if mso]><table border="0" cellspacing="0" cellpadding="0"><tr><td style="padding-right:10px;"><![endif]-->
+<table class="socialshare-innertable" style="display: inline-block"><tr><td style="padding:5px 10px">
+<a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd56c4d9ded1cbccaa5ddb7699f5d9f3227bb34e206695867120a23df414bf277e1da068e9f6445139b6db5703dea2621e5" ><img src="https://image.s4.exct.net/lib/fe911573736c007d7d/m/2/1a560d12-c8d7-40cb-9e90-9df36933fdfa.png" alt="Facebook" width="24" height="24" style="display: block;; width: 24px !important; height: 24px !important"></a></td></tr></table><!--[if mso]></td><td style="padding-right:10px;"><![endif]--><table class="socialshare-innertable" style="display: inline-block"><tr><td style="padding:5px 10px"><a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd5ecc55f720f8e40213f4165d4f41201208dfbb5e09ca81ca1d4d4ab2598dffaefdf15a08334851c9a34e48806c00bbd6a" >
+<img src="https://image.s4.exct.net/lib/fe911573736c007d7d/m/2/a3b47106-a80a-401f-8435-6b6398001c4f.png" alt="Twitter" width="24" height="24" style="display: block;; width: 24px !important; height: 24px !important"></a></td></tr></table><!--[if mso]></td><td><![endif]--><table class="socialshare-innertable" style="display: inline-block"><tr><td style="padding:5px 10px"><a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd59eb06596e37071480ea012ced63a377f18aa8ea46891f7795172b69f5cea624e87a6ecaf5f79ab66c5e8ec5d862d9d3c" ><img src="https://image.s4.exct.net/lib/fe911573736c007d7d/m/2/0e6fddf1-c205-4752-ad42-e9dc03c83dea.png" alt="Instagram" width="24" height="24" style="display: block;; width: 24px !important; height: 24px !important"></a></td></tr></table><!--[if mso]></td></tr></table>
+<![endif]--></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper camarker-inner"><table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><a href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd58141e337e4356c3d8e41aee22758bf4ab71ef3bef4186c58b9e63ea2ec478fa7b02a2ad0c9bdb373fb1d59efc10a0537" title="Register for Wall Street 101"   data-linkto="https://">
+<img data-assetid="52477" src="http://image.enrollment.odu.edu/lib/fe3c15707564067b731070/m/1/59cce092-ba8f-4956-a7a0-d1af2dc9bcdc.jpg" alt="Tech classroom with students overlaid with Wall Street 101 text" width="600" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%;"></a></td></tr>
+</table></td></tr></table></td></tr></table>
+                                  
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" class="" valign="top">
+                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; border-top: 0px; border-right: 0px; border-bottom: 1px solid transparent; border-left: 0px; " class="slot-styling"><tr><td style="padding: 0px 0px 10px; " class="slot-styling camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper camarker-inner"><table cellspacing="0" cellpadding="0" style="width: 100%;"><tr><td><table cellspacing="0" cellpadding="0" style="width: 100%;"><tr><td valign="top" class="responsive-td" style="width: 100%;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr>
+<td class="stylingblock-content-wrapper camarker-inner"><div style="text-align: center;">
+	<span style="font-size:20px;"><span style="font-family:Arial,Helvetica,sans-serif;"><b><span style="color:#164c6d;">Take A Class During Winter Break</span></b></span></span></div><div>
+	<br>
+	Dear Logan,<br>
+	&nbsp;</div><div>
+	I&rsquo;m writing to encourage you to review ODU&rsquo;s <a   data-linkto="https://" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd5615b3fe257c6056106605ce59fec23cb7d1444599fd95f76a72e99af25f0b9507e0bc67cda67e07fac0f5bc55ed3ca3d" style="color:#164C6D;text-decoration:underline;" title="winter term">winter term</a> offerings. There are a limited number of courses offered completely online starting December 29 and end January 15. Winter Term courses are compressed online versions of courses. Instructors pack a full semester's worth of knowledge into three short weeks with the same great faculty, classes, services, and learning opportunities.&nbsp;Consult your academic advisor and your degree plan to assure courses count towards your degree completion</div></td></tr></table></td></tr></table></td></tr></table></td></tr>
+</table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" class="stylingblock-content-wrapper" style="min-width: 100%; "><tr><td class="stylingblock-content-margin-cell" style="padding: 12px 12px 0px; "><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px; " class="stylingblock-content-wrapper camarker-inner"><table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><table border="0" cellspacing="0" cellpadding="0" role="presentation"><tr>
+<td class="innertd buttonblock" bgcolor="#005AA3" style=" border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; overflow: hidden; color: #FFFFFF; background-color: #005AA3;"><a style=" font-size: 16px; font-family: Arial, helvetica, sans-serif; color: #FFFFFF; text-align: center; text-decoration: none; display: block; line-height: 100%; background-color: #005AA3; border: 0px solid #005AA3; padding: 16px 18px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;" target="_blank" class="buttonstyles" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd5be4b7a474aaf633efe334af3492e6acb5ef9c332cec29cd31f1d95f5a99fc54fc94d72ecc920d98e7772d6b9a9fefe0f" title="Search Winter Term Courses "   data-linkto="https://">Search Winter Term Courses!</a></td></tr></table></td></tr></table></td></tr></table></td></tr>
+</table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><p style="margin: 10 0 10px;">
+	Steps to get started:</p><ol>
+	<li style="margin: 10 0 10px;">
+		Search <a   data-linkto="https://" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd55fd9c01719ba8fe2b6d484dc2e4611e6de55e90cd1029837b8f26a5a9d901a44e5038fdb886eb9b876f5c4c37df15c97" style="color:#164C6D;text-decoration:underline;" title="Winter Term Courses">Winter Term Courses</a>&nbsp;</li><li style="margin: 10 0 10px;">
+		Review&nbsp;<a   data-linkto="https://" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd572febe8551957353af6d81a4609cbbc1a75f7075f7785de32213ad52bcf5c0c8ce595f47abdda1a128cc68de52fbea95" style="color:#164C6D;text-decoration:underline;" title="Important Dates and Deadlines">Important Dates and Deadlines</a>&nbsp;</li><li style="margin: 10 0 10px;">
+		View How-to <a   data-linkto="https://" href="http://click.enrollment.odu.edu/?qs=d127416b3f58fdd582af002ddbb38aa34b583c7b5fb20ff711851cf0f615caf52310a8412687104b57d12547c9acea184ac67f4ea10eefa5" style="color:#164C6D;text-decoration:underline;" title="Register in Leo Online">Register in Leo Online</a>&nbsp;</li></ol><div style="margin: 10 0 10px;">
+	Winter term is part of the spring semester. Students may only register for one winter term course (up to 4 credits).&nbsp;<br>
+	<br>
+	Go Monarchs!<br>
+	<br>
+	Renee R. Felts, Ed.D.<br>
+	Assistant Vice President&nbsp;<br>
+	School of Continuing Education<br>
+	&nbsp;</div></td></tr></table></td></tr></table>
+                                  
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" class="" valign="top">
+                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; border-top: 1px solid #C9C9C9; border-right: 0px; border-bottom: 1px solid #C9C9C9; border-left: 0px; " class="slot-styling"><tr><td style="padding: 10px 0px; " class="slot-styling camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="text-align: left; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner" align="left"><table cellpadding="0" cellspacing="0" class="socialshare-wrapper" width="100%"><tr><td align="center"><table cellpadding="0" cellspacing="0" align="center"><tr><td align="center"><!--[if mso]><table border="0" cellspacing="0" cellpadding="0"><tr><td style="padding-right:10px;"><![endif]--><table class="socialshare-innertable" style="display: inline-block"><tr><td style="padding:5px 10px">
+<a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=4d57708b42d9cde56f48e1315ef4e62959de55968f6284dc68120c641db896b48a1cd11d1b4df3f9db8b37263e08d272f9431d58ac951f30" >
+<img src="https://image.s4.exct.net/lib/fe911573736c007d7d/m/2/1a560d12-c8d7-40cb-9e90-9df36933fdfa.png" alt="Facebook" width="24" height="24" style="display: block;; width: 24px !important; height: 24px !important"></a></td></tr></table><!--[if mso]></td><td style="padding-right:10px;"><![endif]--><table class="socialshare-innertable" style="display: inline-block"><tr><td style="padding:5px 10px"><a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5170be23c7175c1a3dd62c7ad2e4ed307a387ab6c7ab19cad25fca921fe52fe32bb9766b9caf6e3ad81725238c39f697d" ><img src="https://image.s4.exct.net/lib/fe911573736c007d7d/m/2/a3b47106-a80a-401f-8435-6b6398001c4f.png" alt="Twitter" width="24" height="24" style="display: block;; width: 24px !important; height: 24px !important"></a></td></tr></table><!--[if mso]>
+</td><td><![endif]--><table class="socialshare-innertable" style="display: inline-block"><tr><td style="padding:5px 10px"><a style="font-weight:normal;color:#164C6D;text-decoration:underline;line-height:100%;" href="http://click.enrollment.odu.edu/?qs=4d57708b42d9cde5be9b90c7225301849edd9dd210cde6646d4a515f07998b1dff44d8931a095085f3255dcaf66114af3f0fdad3e1b54f69" ><img src="https://image.s4.exct.net/lib/fe911573736c007d7d/m/2/0e6fddf1-c205-4752-ad42-e9dc03c83dea.png" alt="Instagram" width="24" height="24" style="display: block;; width: 24px !important; height: 24px !important"></a></td></tr></table><!--[if mso]></td></tr></table><![endif]--></td></tr></table></td></tr></table></td></tr></table></td></tr></table>
+                                  
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" class="" valign="top">
+                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="slot-styling"><tr><td style="padding: 20px 0px 0px; " class="slot-styling camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%; " class="stylingblock-content-wrapper"><tr><td style="padding: 0px 10px 15px; " class="stylingblock-content-wrapper camarker-inner"><div style="text-align: center;">
+	<span style="font-size:12px;"><a   data-linkto="https://" href="http://click.enrollment.odu.edu/?qs=4d57708b42d9cde589be0cea855583dca82943a6d5073c7e2232d59411eddb23d3691bf68fd7c9c972ee3077f29c8db59a31b013ef126ede" style="color:#164C6D;text-decoration:underline;font-weight:normal;line-height:100%;" title="School of Continuing Education">School of Continuing Education</a>&nbsp;&bull; 2110 Monarch Hall, Norfolk, VA 23529&nbsp;&bull; <a alias="757-683-5650" conversion="false" data-linkto="other" href="tel:7576835650" style="color:#164C6D;text-decoration:underline;font-weight:normal;line-height:100%;" title="757-683-5650">757-683-5650</a></span></div></td></tr></table></td></tr></table>
+                                  
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">
+          
+        </td>
+      </tr>
+    </table>
+  </body>
+<!--RegionEnd[socialslot:"allcontent"]--></html>
+
+--anr1saHjVbqZ=_?:--

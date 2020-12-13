@@ -1,0 +1,41 @@
+Hello CS students,
+ 
+The ODU CS Systems Group is accepting applications for the part-time position of Consultant.
+ 
+The Systems Group is comprised of a team of students who maintain the compute, storage, and network resources of the CS department, to include Cisco iOS, Netapp, Linux, and Windows platforms. Our goal is to support to the Computer Science Department by providing robust end-to-end services encompassing every solution our department requires.
+
+This is an opportunity to gain experience with different applications, systems, and technologies that are used in the real-world with the convenience of scheduling around your classes.
+ 
+Applications can be submitted at http://cs.odu.edu/apply
+ 
+Systems Group Consultants are expected to:
+ 
+Assist in the day-to-day operations of the CS Department
+ 
+Provide technical support to users, faculty and students alike
+ 
+Complete learning projects designed to expand your knowledge set and provide a guided learning experience.
+ 
+As consultants gain experience and familiarity with our infrastructure, they are given more difficult but rewarding tasks to further grow their skill set.
+ 
+ 
+Applicants are REQUIRED to have the following:
+ 
+The ability to work in person on campus
+ 
+Two or more years remaining on their degree here at ODU.
+ 
+The ability to work over holiday breaks and summer.
+ 
+Some ground level experience with Computer Systems and Basic IP Networks.
+ 
+ 
+Applicants with one or more of the following skills are desirable:
+ 
+Good Troubleshooting Skills
+ 
+Familiarity with a *nix environment and command line interfaces
+ 
+An ability to learn new concepts very quickly and have demonstrated previous aptitude to learn in the IT Field.
+
+We look forward to your application!

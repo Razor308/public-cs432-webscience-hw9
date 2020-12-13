@@ -1,0 +1,13 @@
+Your work was received!
+
+You successfully submitted your coursework. Each time you submit coursework, you receive a unique confirmation ID to verify when your submission was received. You can view your submission receipts on your My Grades page.
+
+Submission details:
+Submission confirmation ID: d325faf81cc04fafa2cf4dfa01c6ffa1
+Title of course: 202010_CS432_22005 WEB SCIENCE
+Course ID: 202010_FALL_CS432_22005
+Title of coursework: HW8 - Clustering
+Date/time of submission: Dec 9, 2020 4:18 AM
+Size of written submission: 0.1kb
+Size and name of files received:
+Unique Item ID (for administrator use only): _2350521_1

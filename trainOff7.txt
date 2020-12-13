@@ -1,0 +1,14 @@
+Your work was received!
+
+You successfully submitted your coursework. Each time you submit coursework, you receive a unique confirmation ID to verify when your submission was received. You can view your submission receipts on your My Grades page.
+
+Submission details:
+Submission confirmation ID: 807034b1828a41e9af2ef7c6c94bcf60
+Title of course: 202010_CS312_16490 INTERNET CONCEPTS
+Course ID: 202010_FALL_CS312_16490
+Title of coursework: Project - Part 3
+Date/time of submission: Dec 11, 2020 2:03 PM
+Size of written submission: 0bytes
+Size and name of files received: project_part3.zip (14.5kb)
+Unique Item ID (for administrator use only): _2361831_1
+

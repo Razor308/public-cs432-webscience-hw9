@@ -1,0 +1,379 @@
+\documentclass[12pt]{article}
+\usepackage{times} 			% use Times New Roman font
+
+\usepackage[margin=1in]{geometry}   % sets 1 inch margins on all sides
+\usepackage{hyperref}               % for URL formatting
+\usepackage[pdftex]{graphicx}       % So includegraphics will work
+\setlength{\parskip}{1em}           % skip 1em between paragraphs
+\usepackage{indentfirst}            % indent the first line of each paragraph
+\usepackage{datetime}
+\usepackage[small, bf]{caption}
+\usepackage{listings}               % for code listings
+\usepackage{xcolor}                 % for styling code
+\usepackage{multirow}
+
+%New colors defined below
+\definecolor{backcolour}{RGB}{246, 246, 246}   % 0xF6, 0xF6, 0xF6
+\definecolor{codegreen}{RGB}{16, 124, 2}       % 0x10, 0x7C, 0x02
+\definecolor{codepurple}{RGB}{170, 0, 217}     % 0xAA, 0x00, 0xD9
+\definecolor{codered}{RGB}{154, 0, 18}         % 0x9A, 0x00, 0x12
+
+%Code listing style named "gcolabstyle" - matches Google Colab
+\lstdefinestyle{gcolabstyle}{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\itshape\color{codegreen},
+  keywordstyle=\color{codepurple},
+  stringstyle=\color{codered},
+  numberstyle=\ttfamily\footnotesize\color{darkgray}, 
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+\lstset{style=gcolabstyle}      %set gcolabstyle code listing
+
+% to make long URIs break nicely
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+% for fancy page headings
+\usepackage{fancyhdr}
+\setlength{\headheight}{13.6pt} % to remove fancyhdr warning
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small \thepage}
+\lhead{\small HW9, Bartels}  % EDIT THIS, REPLACE # with HW number
+\chead{\small CS 432, Fall 2020} 
+
+%-------------------------------------------------------------------------
+\begin{document}
+
+\begin{centering}
+{\large\textbf{HW9 - Email Classification}}\\ % EDIT THIS
+                                % REPLACE # with HW num and ADD title
+Logan Bartels\\                     % EDIT THIS
+December 13, 2020\\                      % EDIT THIS
+\end{centering}
+
+%-------------------------------------------------------------------------
+
+% The * after \section just says to not number the sections
+\section*{Q1}
+
+
+\subsection*{Answer}
+The topic I've chosen to classify emails on is shopping.  To be more specific, I define shopping emails as emails with discounts from businesses I regularly do business with.  For this assignment, those business include Best Buy, Old Navy, and Amazon.  I must state that I only have 1 email from Amazon in my training set, as it was the only Amazon email I could extract the plain-text from.  I must also state that I used my personal email for shopping emails, and my ODU email for ``not shopping'' emails.  For all of the emails I consider to be shopping emails (including test emails), I extracted the text using JusText. I also used JusText to extract the first 5 training ``not shopping'' emails.  For the rest of the ``not shopping'' emails, I just copy-pasted the text from emails from my ODU account into text files.  I did this because JusText was inserting non-plaintext elements into the output file.  That's why when you look in the repository you will only see 30 *.eml files instead of 50.  
+
+As for the naming convention of the text files, each file is named to represent their purpose.  All training emails are saved with ``train'' as the prefix, followed by ``On'' or ``Off'' to represent whether they are on or off topic (shopping or not shopping).  Each training email is concluded with a number to keep track of the files.  So a training email that is on topic would be saved as ``trainOn1.txt.''  All testing emails have the prefix ``test,'' and the rest of the name shares the same conventions as the training files.  So a test email that is not on topic would be saved as ``testOff1.txt.''
+
+\subsection*{Note:}
+Questions 2 and 3 were completed using a copy of the week 13 Colab notebook.  The notebook can be found in the repository, and here: \url{https://colab.research.google.com/drive/16ht-67nTMMN8m4pPBI3v6icdzbGAL2pM?usp=sharing}
+
+Modifications to the notebook are documented below.
+
+\section*{Q2}
+
+\subsection*{Answer}
+
+\begin{lstlisting}[language=Python, caption=A single cell in the notebook dedicated to reading in the text-file version of emails., label=lst:read]
+# Read in files for training
+# emails that are shopping
+file = open("trainOn1.txt", "r")
+trainOn1 = file.read()
+file = open("trainOn2.txt", "r")
+trainOn2 = file.read()
+file = open("trainOn3.txt", "r")
+trainOn3 = file.read()
+file = open("trainOn4.txt", "r")
+trainOn4 = file.read()
+file = open("trainOn5.txt", "r")
+trainOn5 = file.read()
+file = open("trainOn6.txt", "r")
+trainOn6 = file.read()
+file = open("trainOn7.txt", "r")
+trainOn7 = file.read()
+file = open("trainOn8.txt", "r")
+trainOn8 = file.read()
+file = open("trainOn9.txt", "r")
+trainOn9 = file.read()
+file = open("trainOn10.txt", "r")
+trainOn10 = file.read()
+file = open("trainOn11.txt", "r")
+trainOn11 = file.read()
+file = open("trainOn12.txt", "r")
+trainOn12 = file.read()
+file = open("trainOn13.txt", "r")
+trainOn13 = file.read()
+file = open("trainOn14.txt", "r")
+trainOn14 = file.read()
+file = open("trainOn15.txt", "r")
+trainOn15 = file.read()
+file = open("trainOn16.txt", "r")
+trainOn16 = file.read()
+file = open("trainOn17.txt", "r")
+trainOn17 = file.read()
+file = open("trainOn18.txt", "r")
+trainOn18 = file.read()
+file = open("trainOn19.txt", "r")
+trainOn19 = file.read()
+file = open("trainOn20.txt", "r")
+trainOn20 = file.read()
+# emails that are not shopping
+file = open("trainOff1.txt" , "r")
+trainOff1 = file.read()
+file = open("trainOff2.txt" , "r")
+trainOff2 = file.read()
+file = open("trainOff3.txt" , "r")
+trainOff3 = file.read()
+file = open("trainOff4.txt" , "r")
+trainOff4 = file.read()
+file = open("trainOff5.txt" , "r")
+trainOff5 = file.read()
+file = open("trainOff6.txt" , "r")
+trainOff6 = file.read()
+file = open("trainOff7.txt" , "r")
+trainOff7 = file.read()
+file = open("trainOff8.txt" , "r")
+trainOff8 = file.read()
+file = open("trainOff9.txt" , "r")
+trainOff9 = file.read()
+file = open("trainOff10.txt" , "r")
+trainOff10 = file.read()
+file = open("trainOff11.txt" , "r")
+trainOff11 = file.read()
+file = open("trainOff12.txt" , "r")
+trainOff12 = file.read()
+file = open("trainOff13.txt" , "r")
+trainOff13 = file.read()
+file = open("trainOff14.txt" , "r")
+trainOff14 = file.read()
+file = open("trainOff15.txt" , "r")
+trainOff15 = file.read()
+file = open("trainOff16.txt" , "r")
+trainOff16 = file.read()
+file = open("trainOff17.txt" , "r")
+trainOff17 = file.read()
+file = open("trainOff18.txt" , "r")
+trainOff18 = file.read()
+file = open("trainOff19.txt" , "r")
+trainOff19 = file.read()
+file = open("trainOff20.txt" , "r")
+trainOff20 = file.read()
+# Read in files for testing
+# Test emails that should be shopping
+file = open("testOn1.txt", "r")
+testOn1 = file.read()
+file = open("testOn2.txt", "r")
+testOn2 = file.read()
+file = open("testOn3.txt", "r")
+testOn3 = file.read()
+file = open("testOn4.txt", "r")
+testOn4 = file.read()
+file = open("testOn5.txt", "r")
+testOn5 = file.read()
+# Test emails that should not be shopping
+file = open("testOff1.txt", "r")
+testOff1 = file.read()
+file = open("testOff2.txt", "r")
+testOff2 = file.read()
+file = open("testOff3.txt", "r")
+testOff3 = file.read()
+file = open("testOff4.txt", "r")
+testOff4 = file.read()
+file = open("testOff5.txt", "r")
+testOff5 = file.read()
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Modified spamTrain function to train the classifier., label=lst:train]
+def spamTrain(cl):
+  # emails that are shopping
+  cl.train(trainOn1, 'shopping')
+  cl.train(trainOn2, 'shopping')
+  cl.train(trainOn3, 'shopping')
+  cl.train(trainOn4, 'shopping')
+  cl.train(trainOn5, 'shopping')
+  cl.train(trainOn6, 'shopping')
+  cl.train(trainOn7, 'shopping')
+  cl.train(trainOn8, 'shopping')
+  cl.train(trainOn9, 'shopping')
+  cl.train(trainOn10, 'shopping')
+  cl.train(trainOn11, 'shopping')
+  cl.train(trainOn12, 'shopping')
+  cl.train(trainOn13, 'shopping')
+  cl.train(trainOn14, 'shopping')
+  cl.train(trainOn15, 'shopping')
+  cl.train(trainOn16, 'shopping')
+  cl.train(trainOn17, 'shopping')
+  cl.train(trainOn18, 'shopping')
+  cl.train(trainOn19, 'shopping')
+  cl.train(trainOn20, 'shopping')
+  # emails that are not shopping
+  cl.train(trainOff1, 'not shopping')
+  cl.train(trainOff2, 'not shopping')
+  cl.train(trainOff3, 'not shopping')
+  cl.train(trainOff4, 'not shopping')
+  cl.train(trainOff5, 'not shopping')
+  cl.train(trainOff6, 'not shopping')
+  cl.train(trainOff7, 'not shopping')
+  cl.train(trainOff8, 'not shopping')
+  cl.train(trainOff9, 'not shopping')
+  cl.train(trainOff10, 'not shopping')
+  cl.train(trainOff11, 'not shopping')
+  cl.train(trainOff12, 'not shopping')
+  cl.train(trainOff13, 'not shopping')
+  cl.train(trainOff14, 'not shopping')
+  cl.train(trainOff15, 'not shopping')
+  cl.train(trainOff16, 'not shopping')
+  cl.train(trainOff17, 'not shopping')
+  cl.train(trainOff18, 'not shopping')
+  cl.train(trainOff19, 'not shopping')
+  cl.train(trainOff20, 'not shopping') 
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Code cell to call the classifier set the database and call spamTrain, label=lst:bayes]
+# HW9 test
+cl = naivebayes(getwords)
+cl.setdb('test.db')
+spamTrain(cl)
+\end{lstlisting}
+
+\textbf{Note:} Classification results were obtained by copy-pasting the following cell in the notebook into other cells and changing the variable name passed in as needed.  This can be seen in the cells beneath the cell shown in listing \ref{lst:bayes}.
+\begin{lstlisting}[language=Python, caption=Code to classify test variable., label=lst:classify]
+cl.classify(testOn1, default='unknown')
+\end{lstlisting}
+
+\begin{table}[h]
+\centering
+\caption{Classification results.}
+\label{tbl:clresults}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Test file} & \textbf{Classification} \\ \hline \hline
+testOn1.txt & shopping \\ \hline
+testOn2.txt & shopping \\ \hline
+testOn3.txt & shopping \\ \hline
+testOn4.txt & shopping \\ \hline
+testOn5.txt & shopping \\ \hline
+testOff1.txt & not shopping\\ \hline
+testOff2.txt & not shopping\\ \hline
+testOff3.txt & not shopping\\ \hline
+testOff4.txt & not shopping\\ \hline
+testOff5.txt & shopping\\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Discussion}
+I should start with stating that I used the Bayesian classifier with SQL (the classifier class was passed into the naivebayes class) to obtain my classifications.  The code in listing \ref{lst:read} reads in each of the text files an stores their text in variables named after the file.  I know that there are better, more concise methods of doing this, but in the interest of time, I opted for the brute-force-copy-paste approach.  The code in listing \ref{lst:train} is a modified version of the example notebook's spamTrain function.  It takes each variable that a file's text was saved in and uses it to train the classifier.  Variables named ``trainOnx'' are classified as shopping, and files named ``trainOffx'' are classified as ``not shopping.''  The code in listing \ref{lst:bayes} calls the naivebays classifier and sets the database to ``test.db.''  Then it calls the spamtrain function to feed in the training files/variables.  After that, I simply call the classify function for each test variable/file, and set the default classification to unknown.  This is shown in listing \ref{lst:classify}.  Most of the classifications were correct, the keyword being ``most.'' I will elaborate more in question 3.
+
+
+\section*{Q3}
+
+\subsection*{Answer}
+
+\begin{table}[h]
+\centering
+\caption{Confusion Matrix}
+\label{tbl:confusion}
+\begin{tabular}{l|l|c|c|}
+\multicolumn{2}{c}{}&\multicolumn{2}{c}{Actual}\\
+\cline{3-4}
+\multicolumn{2}{c|}{}&Shopping&Not Shopping\\
+\cline{2-4}
+\multirow{2}{*}{Predicted}& Shopping & 5  & 1 \\
+\cline{2-4}
+& Not Shopping & 0  & 4  \\
+\cline{2-4}
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}[caption=Text of testOff5.txt, label=lst:fp]
+Greetings fellow Monarchs,
+
+Our next College of Sciences Lunch and Learn will take place on Tuesday, November 17th from 12:20 - 1:20pm and feature Lynn Clements, former Executive Director of the Virginia Aquarium and Marine Science Center, and Greg Bockheim, Executive Director of the Virginia Zoo.  You will learn how they got into the field of animal conservation, the challenges and rewards of working with animals, and how you can enter a career at an accredited zoo or aquarium.  Please join us.
+
+Join Zoom Meeting
+https://odu.zoom.us/j/94632175154?pwd=dzl6bnlPeU5HUGdJQ3ZrWFNmN3lidz09
+
+Meeting ID: 946 3217 5154
+Passcode: 805735
+
+
+\end{lstlisting}
+
+\subsection*{Discussion}
+As you can see in table \ref{tbl:confusion}, I had only 1 false positive classification.  According to table \ref{tbl:clresults}, that false positive was testOff5.txt.  The text for that file is shown in listing \ref{lst:fp}.  I am perplexed as to why this email was classified as a shopping email.  If anything, this goes to show that classification algorithms are not perfect.  I would bet money on the average person getting an email in their inbox where it should have gone somewhere else at least once in their lifetime.
+
+\section*{Extra Credit}
+
+\section*{Q4}
+
+\subsection*{Answer}
+\begin{equation}
+    Precision = \frac{\sum True Positive}{\sum Test Outcome Positive}
+\end{equation}
+\begin{equation}
+    Precision = \frac{5}{6}
+\end{equation}
+\begin{equation}
+    Precision = 0.833
+\end{equation}
+
+\begin{equation}
+    Accuracy = \frac{\sum True Positive + \sum True Negative}{\sum Total Population}
+\end{equation}
+\begin{equation}
+    Accuracy = \frac{5 + 4}{10}
+\end{equation}
+\begin{equation}
+    Accuracy = 0.9
+\end{equation}
+
+\subsection*{Discussion}
+
+The formulas in equations 1 and 4 were taken from slide 43 of the Week 13 slides.  For the precision, the confusion matrix shown in figure \ref{tbl:confusion} shows 5 true positives and 1 false positive.  It follows that the numerator of the fraction is 5 and the denominator is 6 (5 true positives plus 1 false positive).  The final value for precision is 0.833.
+
+For accuracy the confusion matrix shows 5 true positives and 4 true negatives.  We know from the assignment that the total test population is 10.  It follows that the numerator is the sum of 5 and 4, and the denominator is 10.  The final value for accuracy is 0.9.  Both values were calculated mentally and checked by the Windows 10 calculator application.
+
+\section*{Q5}
+
+\subsection*{Answer}
+
+\begin{table}[h]
+\centering
+\caption{Updated Confusion Matrix}
+\label{tbl:newconfusion}
+\begin{tabular}{l|l|c|c|}
+\multicolumn{2}{c}{}&\multicolumn{2}{c}{Actual}\\
+\cline{3-4}
+\multicolumn{2}{c|}{}&Shopping&Not Shopping\\
+\cline{2-4}
+\multirow{2}{*}{Predicted}& Shopping & 5  & 0 \\
+\cline{2-4}
+& Not Shopping & 0  & 5  \\
+\cline{2-4}
+\end{tabular}
+\end{table}
+
+\subsection*{Discussion}
+For this question, I improved precision and accuracy by turning the 1 false positive email (indicated in table \ref{tbl:confusion}) into a true negative.  I accomplished this by going to the classifier class, and adjusting the weight and assumed probability (ap) in the weightedprob function.  I started by lowering the weight to 0.5.  Then I proceeded to lower the assumed probability by increments of ten percent (0.1) after every unsuccessful attempt to convert my false positive to a true negative.  I also re-ran the classifications for all other files to make sure nothing else changed that I didn't want to change.  I should note that each time I updated the weightedprob function, I re-ran the classifier class, the naivebayes class, and (because I used the classifier with SQL) deleted the database file for retraining.  I continued to lower the assumed probability by ten percent each time I classified every email to no avail, until I lowered it to 0.2.  When I classified each email with an assumed probability of 0.2 my false positive turned into an ``unknown.''  This was progress.  I lowered the assumed probability once more to 0.1.  This is when my false positive finally turned into a true negative (not shopping).  The updated confusion matrix is shown in table \ref{tbl:newconfusion}.  Every other email's classification was unchanged.
+
+\section*{References}
+
+
+\begin{itemize}
+    \item {Week 13 slides, \url{https://docs.google.com/presentation/d/1TgSeYh7gjpxl8f_9-FKG7MnXG1HI_iwH_KDFyUgKlWU/edit?usp=sharing}}
+    \item {Week 13 Colab notebook, \url{https://colab.research.google.com/github/cs432-websci-fall20/assignments/blob/master/432_PCI_Ch06.ipynb}}
+    \item {JusText repository, \url{https://github.com/miso-belica/jusText}}
+\end{itemize}
+
+\end{document}
+

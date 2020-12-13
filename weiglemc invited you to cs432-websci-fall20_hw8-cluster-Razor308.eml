@@ -1,0 +1,297 @@
+Delivered-To: loganbartels3@gmail.com
+Received: by 2002:a6b:b654:0:0:0:0:0 with SMTP id g81csp5364283iof;
+        Mon, 30 Nov 2020 13:40:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx8o71v1bsRPyyyN3yO6qU13hzgRi6vNfNefwvg+Pan4qF/Fn6OFNYeL1g+zF+XWfYej0B/
+X-Received: by 2002:a0c:abcb:: with SMTP id k11mr24562712qvb.36.1606772438511;
+        Mon, 30 Nov 2020 13:40:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606772438; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FJxZZdl3bA9jGrOiNxVTV4kmM9QPKyW4yewJvtiN3drHMeQL4ckZv5Mk9eiARrQE4m
+         +hfLxHRp9wwVL7t9rboB9xgrkKruzDOB3xDwYArYh0w2YfXX5TrYpz9gLzDRJsrcVuvO
+         eFTV8NRadQ+4CbIFDdhswwVFcyWG5Ei9EItCTNUVk4hUaEF5xWVbFHTBVPC+fxutFkgD
+         5V8fpKh3VCvTdUAGWdVw8j5xc+xyEWGVDCbhRCxH1wqbDSGKoH/SybduvS79us/iz/G+
+         hrHDIPqvlGUCRKn8CxiF/4AFxcq3T0rvq1Y2kgcw0w43d49uOzQE8bKtS3ZuI2xRFZYJ
+         U+pQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=5bq1RcCssTTfF2c49OC7r//AYq1yuCWNh0sGCmF2CEs=;
+        b=N13LkLp+KTuueYeSOW7s8WUSbwwz6Dc2OimeAcQk3le9YLX5XZSGq9BMw81iuFInGI
+         mVOcWjv2Ti8TUXyQQS7k/ntk6C9ysodSEbzV4TKMJ1tTVHGSEcQZMrEtRW6cFIJjZPLR
+         zMhuXiVldbuMbpMqPBuZyJfw7FGI79sr+r2LvfvBuRiEYxfhyCiHjaUPU34YldDxekV8
+         4NzYQ9SgNDydHv4SoYabbWK00HqNpgDT6tV/MPIco09gceU7wjxIy6ZmY8U1y/fGin8k
+         Mx4g92StLLoT+pQZ+BZdJTRBKwDLtBHsUmcbMEVWh7yz+mXgDopKAGpeT3MbO7T8nkmT
+         5BOQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass (test mode) header.i=@github.com header.s=pf2014 header.b=qx23aezm;
+       spf=pass (google.com: domain of noreply@github.com designates 192.30.252.210 as permitted sender) smtp.mailfrom=noreply@github.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=github.com
+Return-Path: <noreply@github.com>
+Received: from out-27.smtp.github.com (out-27.smtp.github.com. [192.30.252.210])
+        by mx.google.com with ESMTPS id z21si8532451qto.391.2020.11.30.13.40.38
+        for <loganbartels3@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Nov 2020 13:40:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@github.com designates 192.30.252.210 as permitted sender) client-ip=192.30.252.210;
+Authentication-Results: mx.google.com;
+       dkim=pass (test mode) header.i=@github.com header.s=pf2014 header.b=qx23aezm;
+       spf=pass (google.com: domain of noreply@github.com designates 192.30.252.210 as permitted sender) smtp.mailfrom=noreply@github.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=github.com
+Received: from github.com (hubbernetes-node-33dca9e.ash1-iad.github.net [10.56.102.42])
+	by smtp.github.com (Postfix) with ESMTPA id 13694900906
+	for <loganbartels3@gmail.com>; Mon, 30 Nov 2020 13:40:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1606772438;
+	bh=5bq1RcCssTTfF2c49OC7r//AYq1yuCWNh0sGCmF2CEs=;
+	h=Date:From:To:Subject:From;
+	b=qx23aezmSxwTSOPe0AGI5TV2Yth+YGP1JNsVhUaS6UjxHkn3c3jOh5qaAWwBx2dQe
+	 hV5OYL/n6xPXF/BdHrfj2lhwveDHL3IMj/Q3eLgLFUPABflkDmpRZPLTAmrua2WFe3
+	 3R6JeR6SF9OhtXgVh5eQQYxKw9zXokDzccbcOlqE=
+Date: Mon, 30 Nov 2020 13:40:38 -0800
+From: Michele Weigle <noreply@github.com>
+To: loganbartels3@gmail.com
+Message-ID: <5fc566d6f909_4e19b41275c2@lowworker-7b86bbff7f-nqvpj.mail>
+Subject: weiglemc invited you to cs432-websci-fall20/hw8-cluster-Razor308
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5fc566d6f324_4e19b4127424";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Auto-Response-Suppress: All
+
+
+----==_mimepart_5fc566d6f324_4e19b4127424
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+@weiglemc has invited you to collaborate on the cs432-websci-fall20/hw8-c=
+luster-Razor308 repository.=0D
+=0D
+Visit https://github.com/cs432-websci-fall20/hw8-cluster-Razor308/invitat=
+ions to accept or decline this invitation.=0D
+=0D
+You can also visit https://github.com/weiglemc to learn a bit more about =
+@weiglemc.=0D
+=0D
+This invitation will expire in 7 days.=0D
+=0D
+Some helpful tips:=0D
+- If you get a 404 page, make sure you=E2=80=99re signed in as Razor308.=0D=
+
+- Too many emails from @weiglemc? You can block them by visiting=0D
+  https://github.com/settings/blocked_users?block_user=3Dweiglemc or repo=
+rt abuse at=0D
+  https://github.com/contact/report-abuse?report=3Dweiglemc=0D
+=0D
+---=0D
+View it on GitHub:=0D
+https://github.com/cs432-websci-fall20/hw8-cluster-Razor308=
+
+----==_mimepart_5fc566d6f324_4e19b4127424
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+    <title>weiglemc invited you to cs432-websci-fall20/hw8-cluster-Razor308</title>
+
+    
+
+  </head>
+<body bgcolor="#fafafa" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="width: 100% !important; min-width: 100%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #fafafa; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; text-align: center; line-height: 20px; font-size: 14px; margin: 0; padding: 0;">
+
+  <table class="body" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; height: 100%; width: 100%; background-color: #fafafa; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" bgcolor="#fafafa">
+    <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+      <td class="center" align="center" valign="top" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;">
+        <center style="width: 100%; min-width: 580px;">
+        <!--email content-->
+
+          <table class="row header" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; width: 100%; position: relative; padding: 0px;">
+            <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+              <td class="center" align="center" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" valign="top">
+                <center style="width: 100%; min-width: 580px;">
+
+                  <table class="container" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: inherit; width: 580px; margin: 0 auto; padding: 0;">
+                    <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+                      <td class="wrapper last" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; position: relative; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0 0px 0 0;" align="center" valign="top">
+
+                        <table class="twelve columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; width: 540px; margin: 0 auto; padding: 0;">
+                          <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+                            <td style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0px 0px 10px;" align="center" valign="top">
+                              <div class="mark" style="text-align: center;" align="center">
+                                <!-- add UTM params to URL -->
+                                <a href="https://github.com" style="color: #4183C4; text-decoration: none;">
+                                  <img alt="GitHub, Inc." class="center logo-wordmark" src="https://github.githubassets.com/images/email/global/wordmark.png" width="102" height="28" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: none; text-align: center; margin: 0 auto; padding: 25px 0 17px; border: none;" align="none">
+                                </a>
+                              </div>
+                            </td>
+                            <td class="expander" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; visibility: hidden; width: 0px; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" align="center" valign="top"></td>
+                          </tr>
+                        </table>
+<!--/.twelve.columns-->
+
+                      </td>
+                    </tr>
+                  </table>
+<!--/.container-->
+
+                </center>
+              </td>
+            </tr>
+          </table>
+<!--/.row.header-->
+
+          <table class="container" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: inherit; width: 580px; margin: 0 auto; padding: 0;">
+            <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+              <td style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" align="center" valign="top">
+
+                <table class="row" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; width: 100%; position: relative; display: block; padding: 0px;">
+                  <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+                    <td class="wrapper last" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; position: relative; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0 0px 0 0;" align="center" valign="top">
+
+                      <div class="panel" style="background-color: #ffffff; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 20px; border: 1px solid #dddddd;">
+
+                        <table class="twelve columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; width: 540px; margin: 0 auto; padding: 0;">
+                          <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+                            <td style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0px 0px 0;" align="center" valign="top">
+
+                              <div class="email-content">
+
+                                <div class="org-content-header" style="padding: 15px 0 10px;">
+  <img class="avatar avatar-user" src="https://avatars0.githubusercontent.com/u/5034094?s=120&amp;v=4" width="60" height="60" alt="@weiglemc" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; overflow: hidden; -webkit-border-radius: 3px; border-radius: 3px;">
+  <img class="content-header-octicon" alt="plus" src="https://github.githubassets.com/images/email/organization/octicon-plus.png" height="60" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%;">
+    <img class="avatar avatar-user" src="https://avatars3.githubusercontent.com/u/61014256?s=120&amp;v=4" width="60" height="60" alt="@Razor308" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; overflow: hidden; -webkit-border-radius: 3px; border-radius: 3px;">
+</div>
+
+<h1 class="primary-heading" style="color: #333; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight: 300; text-align: center; line-height: 1.2; word-break: normal; font-size: 24px; margin: 10px 0 25px; padding: 0;" align="center">@weiglemc has invited you to collaborate on the<br><strong>cs432-websci-fall20/hw8-cluster-Razor308</strong> repository</h1>
+
+<hr class="rule" style="color: #d9d9d9; background-color: #d9d9d9; height: 1px; margin: 20px 0; border: none;">
+
+<p style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: normal; color: #333; line-height: 20px; text-align: left; margin: 15px 0 5px; padding: 0;" align="left">
+  You can <a href="https://github.com/cs432-websci-fall20/hw8-cluster-Razor308/invitations" style="color: #4183C4; text-decoration: none;">accept or decline</a> this invitation.
+    You can also visit <a href="https://github.com/weiglemc" style="color: #4183C4; text-decoration: none;">@weiglemc</a> to learn a bit more about them.
+</p>
+<p style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: normal; color: #333; line-height: 20px; text-align: left; margin: 15px 0 5px; padding: 0;" align="left">
+  This invitation will expire in 7 days.
+</p>
+<!-- note: VML markup is fallback for Outlook 2007, 2010, and 2013; see http://buttons.cm/ -->
+<div class="cta-button-wrap cta-button-wrap-centered" style="text-align: center; color: #ffffff; padding: 20px 0 25px;" align="center">
+<!--[if mso]>
+<p style="line-height:0px;height:0;font-size:1px;margin:0;padding:0;">&nbsp;</p>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://github.com/cs432-websci-fall20/hw8-cluster-Razor308/invitations" style="height:40px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#4183C4">
+  <w:anchorlock/>
+  <center>
+<![endif]-->
+    <a class="cta-button" href="https://github.com/cs432-websci-fall20/hw8-cluster-Razor308/invitations" style="display: inline-block; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; width: auto !important; text-align: center; border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0px 3px 0px #25588c; letter-spacing: normal; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-text-size-adjust: none; background: #28A73F linear-gradient(-180deg, #34d058 0%, #28a745 90%); margin: 0 auto; padding: 6px 12px;">View invitation</a>
+<!--[if mso]>
+  </center>
+</v:roundrect>
+<![endif]-->
+</div>
+
+
+<p class="email-body-subtext" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: normal; color: #333; line-height: 20px; text-align: left; margin: 15px 0 5px; padding: 0;" align="left">
+  <strong>Note:</strong> This invitation was intended for <strong>loganbartels3@gmail.com</strong>.
+  If you were not expecting this invitation, you can ignore this email.
+    If  @weiglemc is sending you too many emails, you can
+    <a href="https://github.com/settings/blocked_users?block_user=weiglemc" style="color: #4183C4; text-decoration: none;">block them</a>
+    or <a href="https://github.com/contact/report-abuse?report=weiglemc" style="color: #4183C4; text-decoration: none;">report abuse</a>.
+</p>
+
+<hr class="rule" style="color: #d9d9d9; background-color: #d9d9d9; height: 1px; margin: 20px 0; border: none;">
+
+<p class="email-text-small email-text-gray" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #777777; line-height: 20px; text-align: left; margin: 15px 0 5px; padding: 0;" align="left">
+  <strong>Getting a 404 error?</strong> Make sure you&#8217;re signed in as <strong>Razor308</strong>.
+</p>
+
+<p class="email-text-small email-text-gray" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #777777; line-height: 20px; text-align: left; margin: 15px 0 5px; padding: 0;" align="left">
+  <strong>Button not working?</strong> Copy and paste this link into your browser:
+  <br><a href="https://github.com/cs432-websci-fall20/hw8-cluster-Razor308/invitations" style="color: #4183C4; text-decoration: none;">https://github.com/cs432-websci-fall20/hw8-cluster-Razor308/invitations</a>
+</p>
+
+
+                              </div>
+<!--/.content-->
+
+                            </td>
+                            <td class="expander" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; visibility: hidden; width: 0px; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" align="center" valign="top"></td>
+                          </tr>
+                        </table>
+<!--/.twelve-columns-->
+
+                      </div>
+<!--/.panel-->
+
+                    </td>
+                  </tr>
+                </table>
+<!--/.row-->
+
+              </td>
+            </tr>
+          </table>
+<!--/.container-->
+
+          <table class="row layout-footer" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; width: 100%; position: relative; padding: 0px;">
+            <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+              <td class="center" align="center" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" valign="top">
+                <center style="width: 100%; min-width: 580px;">
+
+                  <table class="container" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: inherit; width: 580px; margin: 0 auto; padding: 0;">
+                    <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+                      <td class="wrapper last" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; position: relative; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0 0px 0 0;" align="center" valign="top">
+
+                        <table class="twelve columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: center; width: 540px; margin: 0 auto; padding: 0;">
+                          <tr style="vertical-align: top; text-align: center; padding: 0;" align="center">
+                            <td style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0px 0px 10px;" align="center" valign="top">
+                              <div class="footer-links" style="text-align: center; padding: 20px 0;" align="center">
+                                <!-- links need UTM params -->
+                                  <p class="footer-text" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #999; line-height: 20px; text-align: center; margin: 0; padding: 0;" align="center"><a href="https://github.com/settings/emails" style="color: #4183C4; text-decoration: none;">Manage your GitHub email preferences</a></p>
+                                  <p class="footer-text" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #999; line-height: 20px; text-align: center; margin: 0; padding: 0;" align="center">
+                                      <a href="https://docs.github.com/articles/github-terms-of-service/" style="color: #4183C4; text-decoration: none;">Terms</a> &#8226;
+                                      <a href="https://docs.github.com/articles/github-privacy-policy/" style="color: #4183C4; text-decoration: none;">Privacy</a> &#8226;
+                                    <a href="https://github.com/login" style="color: #4183C4; text-decoration: none;">Log in to GitHub</a>
+                                  </p>
+                              </div>
+                              <div class="content" style="margin: 0 0 15px;">
+                                <!-- add UTM params to URL -->
+                                <a href="https://github.com" style="color: #4183C4; text-decoration: none;">
+                                  <img class="logo-invertocat" src="https://github.githubassets.com/images/email/global/footer-mark.png" width="40" height="38" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; border: none;">
+                                </a>
+                              </div>
+                              <div class="content" style="margin: 0 0 15px;">
+                                <p class="footer-text" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #999; line-height: 20px; text-align: center; margin: 0; padding: 0;" align="center">GitHub, Inc.</p>
+                                <p class="footer-text" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #999; line-height: 20px; text-align: center; margin: 0; padding: 0;" align="center">88 Colin P Kelly Jr Street</p>
+                                <p class="footer-text" style="word-wrap: normal; hyphens: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: normal; color: #999; line-height: 20px; text-align: center; margin: 0; padding: 0;" align="center">San Francisco, CA 94107</p>
+                              </div>
+                            </td>
+                            <td class="expander" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; visibility: hidden; width: 0px; color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 20px; font-size: 14px; margin: 0; padding: 0;" align="center" valign="top"></td>
+                          </tr>
+                        </table>
+<!--/.twelve.columns-->
+
+                      </td>
+                    </tr>
+                  </table>
+<!--/.container-->
+
+                </center>
+              </td>
+            </tr>
+          </table>
+<!--/.row.footer-->
+
+        <!--/email content-->
+        </center>
+      </td>
+    </tr>
+  </table>
+<!--/.body-->
+</body>
+</html>
+
+----==_mimepart_5fc566d6f324_4e19b4127424--
