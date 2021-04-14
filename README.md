@@ -1,3 +1,6 @@
+# Below is an assignment for ODU's CS432 Web Science Course.
+# The completed report written in LaTeX can be veiwed [here](HW9_report.pdf)
+
 # Homework 9 - Email Classification
 **Due:** Sunday, December 13, 2020 by 11:59pm 
 
